@@ -1,0 +1,68 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f8ff;
+    margin: 0;
+    padding: 20px;
+}
+
+h2 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+ul#studentList {
+    list-style-type: none;
+    padding: 0;
+    max-width: 400px;
+    margin: 0 auto 30px auto;
+    border: 2px solid #3498db;
+    border-radius: 10px;
+    background-color: #ecf6fc;
+}
+
+ul#studentList li {
+    padding: 10px 15px;
+    border-bottom: 1px solid #3498db;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+ul#studentList li:last-child {
+    border-bottom: none;
+}
+
+ul#studentList li:hover {
+    background-color: #d0e7fb;
+}
+
+p#output {
+    text-align: center;
+    font-size: 1.2em;
+    color: #e74c3c;
+    margin-bottom: 20px;
+    min-height: 1.5em;
+}
+
+button#myButton {
+    display: block;
+    margin: 0 auto;
+    padding: 10px 20px;
+    font-size: 1em;
+    color: white;
+    background-color: #3498db;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+button#myButton:hover {
+    background-color: #2980b9;
+    transform: scale(1.05);
+}
+
+button#myButton:active {
+    background-color: #1c5980;
+    transform: scale(0.95);
+}
