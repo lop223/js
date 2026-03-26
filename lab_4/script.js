@@ -88,13 +88,12 @@ const libraryManagement = {
     },
 
     toggleBookAvailability(title, isBorrowed) {
-        const book = this.books.find(b => b.title === title);
-        if (book) {
-            book.isAvailable = !isBorrowed;
-            console.log(`Book status "${title}" update. Available: ${book.isAvailable}`);
-        } else {
-            console.log("Book not found.");
-        }
+        this.books = this.books.map(b => {
+            if (b.title === title) {
+                b.isAvailable = !isBorrowed;
+            }
+            return b;
+        });
     },
 
     sortBooksByPages() {
@@ -174,3 +173,5 @@ console.table(libraryManagement.books);
 
 console.log("\nTask 7");
 task7();
+
+
