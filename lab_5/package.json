@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "dev": "vite",
+    "start": "node app.js",
+    "build": "webpack"
+  },
+  "devDependencies": {
+    "sass": "^1.98.0",
+    "vite": "^8.0.3"
+  }
+}

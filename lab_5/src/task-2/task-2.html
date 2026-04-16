@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Traffic Lights</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="task-2.css" />
+  </head>
+  <body>
+    <h1>TRAFFIC LIGHT</h1>
+    
+    <div class="main-grid">
+      <div class="status-panel">
+        <div>
+          <div class="status-label">Current State</div>
+          <div class="status-value big" id="stateName">—</div>
+        </div>
+        <div class="divider"></div>
+        <div>
+          <div class="status-label">Time Remaining</div>
+          <div class="timer-row">
+            <div class="timer-bar-wrap">
+              <div class="timer-bar" id="timerBar"></div>
+            </div>
+            <div class="timer-digits" id="timerDigits">—</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div>
+          <div class="status-label">Cycle No.</div>
+          <div class="status-value" id="cycleCount">0</div>
+        </div>
+        <div>
+          <div class="status-label">Next State</div>
+          <div class="status-value" id="nextState">—</div>
+        </div>
+      </div>
+
+      <div class="tl-wrap">
+        <div class="housing">
+          <div class="bulb red" id="bulbRed"></div>
+          <div class="bulb yellow" id="bulbYellow"></div>
+          <div class="bulb green" id="bulbGreen"></div>
+        </div>
+        <div class="pole"></div>
+      </div>
+
+      <div class="controls-panel">
+        <div class="status-label">Duration (sec)</div>
+
+        <div class="input-group">
+          <label>Red Light</label>
+          <div class="input-row">
+            <div class="color-dot r"></div>
+            <input type="number" id="durRed" value="5" min="1" max="60" />
+            <span class="suffix">s</span>
+          </div>
+        </div>
+        <div class="input-group">
+          <label>Yellow Light</label>
+          <div class="input-row">
+            <div class="color-dot y"></div>
+            <input type="number" id="durYellow" value="3" min="1" max="60" />
+            <span class="suffix">s</span>
+          </div>
+        </div>
+        <div class="input-group">
+          <label>Green Light</label>
+          <div class="input-row">
+            <div class="color-dot g"></div>
+            <input type="number" id="durGreen" value="7" min="1" max="60" />
+            <span class="suffix">s</span>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <button class="btn primary" id="btnStart">▶ START</button>
+        <button class="btn" id="btnNext" disabled>⏭ NEXT STATE</button>
+        <button class="btn danger" id="btnStop" disabled>■ STOP</button>
+      </div>
+    </div>
+
+    <div class="log-panel">
+      <div class="log-header">
+        <span>Event Log</span>
+        <button
+          class="btn"
+          id="btnClearLog"
+          style="padding: 3px 10px; font-size: 0.55rem"
+        >
+          clear
+        </button>
+      </div>
+      <div class="log-body" id="logBody"></div>
+    </div>
+
+    <a href="/index.html" class="back-btn-wide" title="Back to Task List">
+      <svg
+        width="32"
+        height="32"
+        viewBox="0 0 32 32"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M26 16H6M6 16L15 25M6 16L15 7"
+          stroke="currentColor"
+          stroke-width="3.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </a>
+
+    <script src="task-2.js"></script>
+  </body>
+</html>

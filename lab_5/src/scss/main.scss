@@ -1,0 +1,39 @@
+@use "variables" as *;
+@use "mixins" as *;
+@use "base";
+
+.card-wrap {
+    @include flex-center;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 400px;
+    width: 100%;
+    margin: 160px auto;
+}
+
+.card {
+    @include card-style;
+    display: block; // Щоб посилання займало всю ширину
+    text-decoration: none; // Прибираємо підкреслення
+    color: inherit; // Беремо колір тексту з body
+    @include transition;
+
+    &:hover {
+        border-color: #fff;
+        transform: translateY(-3px);
+    }
+
+    &-label {
+        font-family: $font-mono;
+        font-size: 0.65rem;
+        color: $color-muted;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+    }
+
+    &-title {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: $color-text;
+    }
+}

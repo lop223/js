@@ -6,7 +6,7 @@ function calcSumFirst(n) {
         i++;
     }
     return sum;
-}
+}      
 
 function factorial(n) {
     let factorial = 1;

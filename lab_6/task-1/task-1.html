@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Список товарів</title>
+    <link rel="stylesheet" href="task-1.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Товари</h1>
+      <div id="total">Загальна сума: 0 грн</div>
+    </header>
+
+    <section id="controls">
+      <div id="filters">
+        <button class="panel panel--tag" data-filter="all">Всі</button>
+        <button class="panel panel--tag" data-filter="electronics">
+          Електроніка
+        </button>
+        <button class="panel panel--tag" data-filter="clothes">Одяг</button>
+        <button class="panel panel--tag" data-filter="food">Їжа</button>
+      </div>
+
+      <div id="sort">
+        <button class="panel panel--tag" data-sort="price">Ціна</button>
+        <button class="panel panel--tag" data-sort="created">
+          Дата створення
+        </button>
+        <button class="panel panel--tag" data-sort="updated">
+          Дата оновлення
+        </button>
+        <button class="panel panel--tag" id="resetSort">Скинути</button>
+      </div>
+    </section>
+
+    <main>
+      <div id="empty">Наразі список товарів пустий</div>
+      <div id="list"></div>
+    </main>
+
+    <button id="addBtn" class="panel panel--button panel--button--confirm">
+      Додати товар
+    </button>
+
+    <div id="modal" class="hidden">
+      <form id="form">
+        <input type="text" id="name" placeholder="Назва" required />
+        <input type="number" id="price" placeholder="Ціна" required min="1" />
+        <input type="text" id="category" placeholder="Категорія" required />
+        <input type="url" id="image" placeholder="URL картинки" required />
+        <button
+          class="panel panel--button panel--button--confirm"
+          type="submit"
+        >
+          Зберегти
+        </button>
+      </form>
+    </div>
+
+    <div id="toast"></div>
+
+    <a href="/index.html" class="back-btn-wide" title="Back to Task List">
+      <svg
+        width="32"
+        height="32"
+        viewBox="0 0 32 32"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M26 16H6M6 16L15 25M6 16L15 7"
+          stroke="currentColor"
+          stroke-width="3.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </a>
+
+    <script src="task-1.js"></script>
+  </body>
+</html>

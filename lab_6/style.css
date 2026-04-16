@@ -1,0 +1,48 @@
+:root {
+  --bg: white;
+  --panel: rgb(232, 232, 232);
+  --border: #2a2a3a;
+  --text: #0d0d12;
+  --font-main: "Syne", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-size: 16px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-main);
+}
+
+main {
+    display: flex;
+    justify-content: center;  /* горизонтально */
+    align-items: center;      /* вертикально */
+    height: 100vh;            /* висота екрану */
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 10%;
+}
+
+.wrapper a {
+    background-color: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    text-decoration: none;
+    color: var(--text);
+    padding: 12px 24px;
+    white-space: nowrap;
+    user-select: none;
+
+    display: inline-block;
+    transition: all 0.2s ease;
+}
+
+.wrapper a:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}

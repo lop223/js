@@ -1,0 +1,262 @@
+:root {
+  --bg: white;
+  --panel: rgb(232, 232, 232);
+  --border: 1px solid black;
+  --border-tag: 1px solid rgb(85, 85, 85);
+  --extra-border: 2px solid black;
+  --border-radius: 5px;
+  --text: black;
+  --text-tag: rgb(85, 85, 85);
+  --confirm: rgb(36, 114, 30);
+  --edit: rgb(114, 94, 30);
+  --delete: rgb(114, 30, 30);
+  --extra-text: black;
+  --font-main: "Syne", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-size: 16px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-main);
+}
+
+body {
+  margin: 0;
+  padding: 20px;
+}
+
+header {
+  margin-bottom: 30px;
+}
+
+header h1 {
+  margin-bottom: 10px;
+}
+
+#filters,
+#sort {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  padding: 6px;
+}
+
+.panel {
+  padding: 5px 15px;
+  background-color: var(--bg);
+  border: var(--border);
+  border-radius: var(--border-radius);
+  color: var(--text);
+
+  display: inline-block;
+  transition: all 0.2s ease;
+}
+
+.panel--tag {
+  color: var(--text-tag);
+  border-color: var(--text-tag);
+}
+
+.panel--button {
+  color: var(--text);
+  border-color: var(--text);
+}
+
+.panel--button--confirm {
+  color: var(--confirm);
+  border-color: var(--confirm);
+}
+
+.panel--button--edit {
+  color: var(--edit);
+  border-color: var(--edit);
+}
+
+.panel--button--delete {
+  color: var(--delete);
+  border-color: var(--delete);
+}
+
+.panel:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.panel:active {
+  transform: translateY(-2px) scale(0.98);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+#info-row {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+#done {
+    color: var(--confirm);
+}
+
+#todo {
+    color: var(--delete);
+}
+
+main {
+  margin-top: 20px;
+  padding: 20px;
+}
+
+#addBtn {
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+#list {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 70%;
+  margin: 0 auto;
+}
+
+/* stats row */
+#stats {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+#controls {
+  margin-top: 10px;
+}
+
+#filters, #sort {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+header {
+  margin-bottom: 20px;
+}
+
+#list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.task {
+  border: var(--border);
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.2s;
+}
+
+.task:hover {
+  transform: translateY(-2px);
+}
+
+.task.done {
+  border-color: var(--confirm);
+  opacity: 0.7;
+}
+
+.task.todo {
+  border-color: var(--delete);
+}
+
+.task span {
+  cursor: pointer;
+}
+
+.task.done span {
+  text-decoration: line-through;
+  color: var(--confirm);
+}
+
+.task.todo span {
+  color: var(--delete);
+}
+
+.task-left {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+#modal {
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+  border: var(--border);
+  border-radius: var(--border-radius);
+}
+
+#modal input {
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.hidden { display: none; }
+
+#toast {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  background: black;
+  color: white;
+  padding: 10px;
+  opacity: 0;
+  transition: 0.3s;
+}
+
+#toast.show {
+  opacity: 1;
+}
+
+.back-btn-wide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 14px 24px;
+  background: var(--panel);
+  border: var(--border);
+  border-radius: 40px;
+  color: #6b6b80;
+  z-index: 100;
+  transition: all 0.3s ease;
+}
+.back-btn-wide svg {
+  color: var(--text);
+  transition: transform 0.3s ease;
+}
+
+.back-btn-wide:hover svg {
+  transform: translateX(-5px);
+}
+.back-btn-wide:active {
+  transform: scale(0.96);
+}

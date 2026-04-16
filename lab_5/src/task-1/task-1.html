@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 1</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="task-1.css" />
+  </head>
+  <body>
+    <h1>Bulb</h1>
+
+    <div class="stage">
+      <div class="bulb-wrap" id="bulbWrap">
+        <svg
+          class="bulb-svg"
+          viewBox="0 0 120 180"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <!-- Base/socket -->
+          <rect x="44" y="138" width="32" height="8" rx="2" fill="#2a2a3a" />
+          <rect x="42" y="146" width="36" height="8" rx="2" fill="#222230" />
+          <rect x="44" y="154" width="32" height="8" rx="2" fill="#2a2a3a" />
+          <!-- Wire contacts -->
+          <line
+            x1="54"
+            y1="162"
+            x2="54"
+            y2="170"
+            stroke="#3a3a4a"
+            stroke-width="3"
+            stroke-linecap="round"
+          />
+          <line
+            x1="66"
+            y1="162"
+            x2="66"
+            y2="170"
+            stroke="#3a3a4a"
+            stroke-width="3"
+            stroke-linecap="round"
+          />
+          <!-- Glass bulb -->
+          <path
+            class="bulb-glass"
+            d="M60,10 C35,10 20,30 20,55 C20,75 30,88 40,100 C45,106 46,115 46,120 L74,120 C74,115 75,106 80,100 C90,88 100,75 100,55 C100,30 85,10 60,10 Z"
+          />
+          <!-- Highlight -->
+          <path
+            d="M38,30 C35,38 33,48 34,56"
+            stroke="rgba(255,255,255,0.15)"
+            stroke-width="3"
+            stroke-linecap="round"
+            fill="none"
+          />
+          <!-- Filament support wires -->
+          <line
+            class="bulb-filament"
+            x1="50"
+            y1="118"
+            x2="50"
+            y2="80"
+            stroke-width="1.5"
+            stroke-linecap="round"
+          />
+          <line
+            class="bulb-filament"
+            x1="70"
+            y1="118"
+            x2="70"
+            y2="80"
+            stroke-width="1.5"
+            stroke-linecap="round"
+          />
+          <!-- Filament -->
+          <path
+            class="bulb-filament"
+            d="M50,80 Q53,68 56,74 Q59,80 62,68 Q65,56 68,62 Q70,68 70,80"
+            fill="none"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <!-- Bottom glass line -->
+          <line
+            x1="46"
+            y1="120"
+            x2="74"
+            y2="120"
+            stroke="#2a2a3a"
+            stroke-width="1.5"
+          />
+        </svg>
+      </div>
+    </div>
+
+    <div class="controls">
+      <div class="card">
+        <div class="card-label">control</div>
+        <button class="toggle-btn" id="toggleBtn">
+          <span id="toggleLabel">TURN ON</span>
+        </button>
+      </div>
+
+      <div class="card">
+        <div class="card-label">bulb type</div>
+        <div class="type-grid">
+          <button class="type-btn active" data-type="normal">
+            <div class="dot"></div>
+            <span class="name">DEFAULT</span>
+          </button>
+          <button class="type-btn" data-type="yellow">
+            <div class="dot"></div>
+            <span class="name">YELLOW</span>
+          </button>
+          <button class="type-btn" data-type="blue">
+            <div class="dot"></div>
+            <span class="name">BLUE</span>
+          </button>
+          <button class="type-btn" data-type="green">
+            <div class="dot"></div>
+            <span class="name">GREEN</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="card" id="brightnessCard">
+        <div class="card-label">Brightness</div>
+        <div class="brightness-row">
+          <input
+            type="range"
+            class="brightness-slider"
+            id="brightnessSlider"
+            min="10"
+            max="100"
+            value="100"
+          />
+          <span class="brightness-value" id="brightnessVal">100%</span>
+        </div>
+        <div class="brightness-note" id="brightnessNote">
+          press B to enter a value at the prompt
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-label">auto-off (inactivity)</div>
+        <div class="timer-row">
+          <span class="timer-info" id="timerInfo">timer is not active</span>
+          <button class="timer-btn" id="timerBtn">TURN ON THE TIMER</button>
+        </div>
+      </div>
+    </div>
+
+    <a
+      href="/index.html"
+      class="back-btn-wide"
+      title="Повернутися до списку завдань"
+    >
+      <svg
+        width="32"
+        height="32"
+        viewBox="0 0 32 32"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M26 16H6M6 16L15 25M6 16L15 7"
+          stroke="currentColor"
+          stroke-width="3.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </a>
+
+    <script src="task-1.js"></script>
+  </body>
+</html>

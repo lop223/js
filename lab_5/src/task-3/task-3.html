@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 3 - Chronos System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="task-3.css" />
+  </head>
+  <body>
+    <section class="card" id="clockSection">
+      <h2 class="card__title">Digital clock</h2>
+      <div class="clock">
+        <span class="clock__seg" id="clockHH">00</span>
+        <span class="clock__sep" id="clockSep">:</span>
+        <span class="clock__seg" id="clockMM">00</span>
+        <span class="clock__sep">:</span>
+        <span class="clock__seg clock__seg--sec" id="clockSS">00</span>
+      </div>
+      <div class="clock__date" id="clockDate">—</div>
+    </section>
+
+    <section class="card" id="countdownSection">
+      <h2 class="card__title">Countdown timer</h2>
+      <div class="countdown__controls">
+        <label class="field">
+          <span class="field__label">Target Date & Time</span>
+          <input
+            type="datetime-local"
+            id="countdownTarget"
+            class="field__input"
+          />
+        </label>
+        <div class="btn-row">
+          <button class="btn btn--start" id="cdStart">Start</button>
+          <button class="btn btn--stop" id="cdStop" disabled>Stop</button>
+        </div>
+      </div>
+      <div class="countdown__display" id="countdownDisplay">
+        <div class="cd-unit">
+          <span class="cd-unit__val" id="cdDays">00</span
+          ><span class="cd-unit__label">d</span>
+        </div>
+        <div class="cd-sep">:</div>
+        <div class="cd-unit">
+          <span class="cd-unit__val" id="cdHours">00</span
+          ><span class="cd-unit__label">h</span>
+        </div>
+        <div class="cd-sep">:</div>
+        <div class="cd-unit">
+          <span class="cd-unit__val" id="cdMins">00</span
+          ><span class="cd-unit__label">m</span>
+        </div>
+        <div class="cd-sep">:</div>
+        <div class="cd-unit">
+          <span class="cd-unit__val" id="cdSecs">00</span
+          ><span class="cd-unit__label">s</span>
+        </div>
+      </div>
+      <div class="countdown__msg" id="cdMsg"></div>
+    </section>
+
+    <section class="card" id="calendarSection">
+      <h2 class="card__title">Calendar</h2>
+      <div class="calendar__nav">
+        <button class="btn btn--icon" id="calPrev">&#8592;</button>
+        <input
+          type="month"
+          id="calMonthPicker"
+          class="field__input field__input--month"
+        />
+        <button class="btn btn--icon" id="calNext">&#8594;</button>
+      </div>
+      <div class="calendar__grid" id="calGrid">
+        <div class="calendar__dow">Mon</div>
+        <div class="calendar__dow">Tue</div>
+        <div class="calendar__dow">Wed</div>
+        <div class="calendar__dow">Thu</div>
+        <div class="calendar__dow">Fri</div>
+        <div class="calendar__dow">Sat</div>
+        <div class="calendar__dow">Sun</div>
+      </div>
+    </section>
+
+    <section class="card" id="birthdaySection">
+      <h2 class="card__title">Birthday Countdown</h2>
+      <div class="birthday__controls">
+        <label class="field">
+          <span class="field__label">Your Birth Date</span>
+          <input type="date" id="bdayInput" class="field__input" />
+        </label>
+        <button class="btn btn--start" id="bdayCalc">Calculate</button>
+      </div>
+      <div class="birthday__result" id="bdayResult" hidden>
+        <div class="bday-grid">
+          <div class="bday-unit">
+            <span class="bday-unit__val" id="bdayMonths">0</span
+            ><span class="bday-unit__label">months</span>
+          </div>
+          <div class="bday-unit">
+            <span class="bday-unit__val" id="bdayDays">0</span
+            ><span class="bday-unit__label">days</span>
+          </div>
+          <div class="bday-unit">
+            <span class="bday-unit__val" id="bdayHours">0</span
+            ><span class="bday-unit__label">hours</span>
+          </div>
+          <div class="bday-unit">
+            <span class="bday-unit__val" id="bdayMins">0</span
+            ><span class="bday-unit__label">minutes</span>
+          </div>
+          <div class="bday-unit">
+            <span class="bday-unit__val" id="bdaySecs">0</span
+            ><span class="bday-unit__label">seconds</span>
+          </div>
+        </div>
+        <div class="bday-date" id="bdayDate"></div>
+      </div>
+    </section>
+
+    <a href="/index.html" class="back-btn-wide" title="Back to Task List">
+      <svg
+        width="32"
+        height="32"
+        viewBox="0 0 32 32"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M26 16H6M6 16L15 25M6 16L15 7"
+          stroke="currentColor"
+          stroke-width="3.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </a>
+
+    <script src="task-3.js"></script>
+  </body>
+</html>

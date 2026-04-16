@@ -1,0 +1,303 @@
+@use "../scss/mixins" as *;
+@use "../scss/variables" as *;
+@use "../scss/base";
+
+header {
+    padding: 48px 0 32px;
+    border-bottom: 1px solid $color-border;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+
+    .logo-block {
+        h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            line-height: 1;
+
+            span { color: $accent; }
+        }
+
+        p {
+            color: $color-muted;
+            font-size: 0.85rem;
+            margin-top: 6px;
+            font-family: $font-mono;
+        }
+    }
+}
+
+.badge-row {
+    display: flex;
+    gap: 8px;
+
+    .badge {
+        font-family: $font-mono;
+        font-size: 0.7rem;
+        padding: 4px 10px;
+        border-radius: 4px;
+        border: 1px solid;
+        font-weight: 500;
+
+        &.map { color: $accent; border-color: $accent; background: rgba($accent, 0.08); }
+        &.set { color: $accent3; border-color: $accent3; background: rgba($accent3, 0.08); }
+        &.wmap { color: $accent4; border-color: $accent4; background: rgba($accent4, 0.08); }
+        &.wset { color: $accent2; border-color: $accent2; background: rgba($accent2, 0.08); }
+    }
+}
+
+// 5. LAYOUT
+.layout {
+    display: grid;
+    grid-template-columns: 360px 1fr;
+    gap: 24px;
+    align-items: start;
+}
+
+.panel {
+    @include panel-style;
+
+    &-header {
+        padding: 16px 20px;
+        border-bottom: 1px solid $color-border;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        .icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            @include flex-center;
+            font-size: 1rem;
+        }
+
+        h2 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .ds-tag {
+            margin-left: auto;
+            font-family: $font-mono;
+            font-size: 0.65rem;
+            color: $color-muted;
+        }
+    }
+
+    &-body {
+        padding: 20px;
+    }
+}
+
+// 6. COMPONENTS (Tabs, Forms, Buttons)
+.tabs {
+    display: flex;
+    gap: 4px;
+    background: $surface;
+    border: 1px solid $color-border;
+    border-radius: 10px;
+    padding: 4px;
+    margin-bottom: 20px;
+
+    .tab {
+        flex: 1;
+        padding: 8px 12px;
+        border: none;
+        background: transparent;
+        color: $color-muted;
+        font-family: $font-sans;
+        font-size: 0.78rem;
+        font-weight: 600;
+        border-radius: 7px;
+        cursor: pointer;
+        @include transition;
+        text-align: center;
+
+        &.active {
+            background: $accent;
+            color: #fff;
+        }
+    }
+}
+
+.form-group {
+    margin-bottom: 14px;
+
+    label {
+        display: block;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+        color: $color-muted;
+        margin-bottom: 6px;
+    }
+}
+
+input, select {
+    width: 100%;
+    padding: 10px 14px;
+    background: $surface;
+    border: 1px solid $color-border;
+    border-radius: 8px;
+    color: $color-text;
+    font-family: $font-mono;
+    font-size: 0.85rem;
+    outline: none;
+    @include transition(border-color);
+
+    &:focus { border-color: $accent; }
+    &::placeholder { color: $color-muted; }
+}
+
+.btn {
+    width: 100%;
+    padding: 11px;
+    border: none;
+    border-radius: 8px;
+    font-family: $font-sans;
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+    letter-spacing: 0.03em;
+    @include transition;
+
+    &-primary {
+        background: $accent;
+        color: #fff;
+        &:hover { background: lighten($accent, 10%); transform: translateY(-1px); }
+    }
+
+    &-danger {
+        background: rgba($accent2, 0.15);
+        color: $accent2;
+        border: 1px solid $accent2;
+        &:hover { background: rgba($accent2, 0.28); }
+    }
+
+    &-success {
+        background: rgba($accent3, 0.15);
+        color: $accent3;
+        border: 1px solid $accent3;
+        &:hover { background: rgba($accent3, 0.28); }
+    }
+
+    &-warn {
+        background: rgba($accent4, 0.15);
+        color: $accent4;
+        border: 1px solid $accent4;
+        &:hover { background: rgba($accent4, 0.28); }
+    }
+}
+
+// 7. DATA TABLES & LISTS
+.table-wrap {
+    overflow-x: auto;
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.85rem;
+
+        thead th {
+            padding: 10px 14px;
+            text-align: left;
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+            color: $color-muted;
+            font-weight: 700;
+            border-bottom: 1px solid $color-border;
+        }
+
+        tbody tr {
+            border-bottom: 1px solid $color-border;
+            @include transition(background);
+            animation: fadeRow 0.3s ease;
+
+            &:hover { background: rgba(255, 255, 255, 0.02); }
+
+            td { padding: 12px 14px; vertical-align: middle; }
+        }
+    }
+}
+
+.price-cell { font-family: $font-mono; color: $accent3; font-weight: 500; }
+.qty-low { color: $accent2; font-weight: 700; }
+
+.order-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 280px;
+    overflow-y: auto;
+
+    .order-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 10px 14px;
+        background: $surface;
+        border: 1px solid $color-border;
+        border-radius: 8px;
+        font-size: 0.82rem;
+        animation: fadeRow 0.3s ease;
+
+        .o-name { font-weight: 700; flex: 1; }
+    }
+}
+
+// 8. STATS ROW
+.stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); // Фіксовано 4 колонки
+    gap: 12px;
+    margin-bottom: 24px;
+
+    .stat-card {
+        background: $card;
+        border: 1px solid $color-border;
+        border-radius: 10px;
+        padding: 14px 16px;
+
+        .s-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            color: $color-muted;
+            font-weight: 700;
+        }
+
+        .s-val {
+            font-size: 1.6rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+    }
+}
+
+// 9. ANIMATIONS & UTILS
+@keyframes fadeRow {
+    from { opacity: 0; transform: translateX(-8px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    &-track { background: $surface; }
+    &-thumb { background: $color-border; border-radius: 3px; }
+}
+
+.tab-content {
+    display: none;
+    &.active { display: block; }
+}
+
+#modal-bg {
+    visibility: hidden;
+}

@@ -1,0 +1,260 @@
+:root {
+  --bg: white;
+  --panel: rgb(232, 232, 232);
+  --border: 1px solid black;
+  --border-tag: 1px solid rgb(85, 85, 85);
+  --extra-border: 2px solid black;
+  --border-radius: 5px;
+  --text: black;
+  --text-tag: rgb(85, 85, 85);
+  --confirm: rgb(36, 114, 30);
+  --edit: rgb(114, 94, 30);
+  --delete: rgb(114, 30, 30);
+  --extra-text: black;
+  --font-main: "Syne", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-size: 16px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-main);
+  /*user-select: none;*/
+}
+
+body {
+  margin: 0;
+  padding: 20px;
+}
+
+header {
+  margin-bottom: 30px;
+}
+
+header h1 {
+  margin-bottom: 10px;
+}
+
+#filters,
+#sort {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  padding: 6px;
+}
+
+.panel {
+  padding: 5px 15px;
+  background-color: var(--bg);
+  border: var(--border);
+  border-radius: var(--border-radius);
+  color: var(--text);
+
+  display: inline-block;
+  transition: all 0.2s ease;
+}
+
+.panel--tag {
+  color: var(--text-tag);
+  border-color: var(--text-tag);
+}
+
+.panel--button {
+  color: var(--text);
+  border-color: var(--text);
+}
+
+.panel--button--confirm {
+  color: var(--confirm);
+  border-color: var(--confirm);
+}
+
+.panel--button--edit {
+  color: var(--edit);
+  border-color: var(--edit);
+}
+
+.panel--button--delete {
+  color: var(--delete);
+  border-color: var(--delete);
+}
+
+.panel:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.panel:active {
+  transform: translateY(-2px) scale(0.98);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+main {
+  margin-top: 20px;
+  padding: 20px;
+}
+
+#addBtn {
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+#list {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  border: var(--border);
+  border-radius: 15px;
+  padding: 10px;
+  width: 250px;
+  transition: 0.3s;
+}
+
+.card:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card h3 {
+  margin-left: 8px;
+  margin-bottom: 8px;
+}
+
+.card .card-info-row {
+  margin-top: 7px;
+  align-items: center;
+  justify-content: space-around;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.card .card-info-row p.price {
+  font-weight: bold;
+}
+
+.card .card-control-row {
+  margin-top: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.card .card-control-row button {
+  width: calc(48% - 5px);
+}
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.card.enter {
+  animation: fadeIn 0.3s;
+}
+
+.card.exit {
+  animation: fadeOut 0.3s forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+}
+
+#modal {
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--bg);
+  padding: 20px;
+  border: var(--border);
+  border-radius: var(--border-radius);
+}
+
+#modal form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+#modal form input,
+#modal form button {
+  width: calc(47% - 10px);
+  margin: 5px;
+}
+
+#modal form input {
+  padding: 5px;
+  border-radius: var(--border-radius);
+}
+
+.hidden {
+  display: none;
+}
+
+#toast {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  background: black;
+  color: white;
+  border-radius: 10px;
+  padding: 10px;
+  opacity: 0;
+  transition: 0.3s;
+}
+
+#toast.show {
+  opacity: 1;
+}
+
+.back-btn-wide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 14px 24px;
+  background: var(--panel);
+  border: var(--border);
+  border-radius: 40px;
+  color: #6b6b80;
+  z-index: 100;
+  transition: all 0.3s ease;
+}
+.back-btn-wide svg {
+  color: var(--text);
+  transition: transform 0.3s ease;
+}
+
+.back-btn-wide:hover svg {
+  transform: translateX(-5px);
+}
+.back-btn-wide:active {
+  transform: scale(0.96);
+}

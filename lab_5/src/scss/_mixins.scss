@@ -1,0 +1,97 @@
+@use "variables" as *;
+
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin card-style {
+    background: $color-panel;
+    border: 1px solid $color-border;
+    border-radius: 16px;
+    padding: 20px 24px;
+}
+
+@mixin panel-style {
+    background: $card;
+    border: 1px solid $color-border;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+@mixin transition($prop: all, $time: 0.3s) {
+    transition: $prop $time ease;
+}
+
+@mixin glow($color, $spread: 12px) {
+    box-shadow: 0 0 $spread $color;
+}
+
+@mixin text-glow($color) {
+    text-shadow: 0 0 12px $color, 0 0 28px rgba($color, 0.4);
+}
+
+@mixin input-base {
+    background: $surface-2;
+    border: 1px solid $color-border;
+    border-radius: $radius-sm;
+    color: $color-text;
+    font-family: $font-main;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 10px 14px;
+    outline: none;
+    transition: border-color .2s, box-shadow .2s;
+
+    &:focus {
+        border-color: $accent;
+        @include glow($accent-glow, 8px);
+    }
+
+    &::-webkit-calendar-picker-indicator {
+        filter: invert(0.7) sepia(1) hue-rotate(160deg);
+        cursor: pointer;
+    }
+}
+
+@mixin btn-base($color, $glow) {
+    @include flex-center;
+    font-family: $font-main;
+    font-size: .9rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    padding: 10px 22px;
+    border: 1px solid $color;
+    border-radius: $radius-sm;
+    background: transparent;
+    color: $color;
+    cursor: pointer;
+    transition: background .2s, box-shadow .2s, opacity .2s;
+
+    &:hover:not(:disabled) {
+        background: rgba($color, 0.1);
+        @include glow($glow, 10px);
+    }
+
+    &:disabled {
+        opacity: .3;
+        cursor: not-allowed;
+    }
+}
+
+@mixin scanline {
+    &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: repeating-linear-gradient(to bottom,
+                transparent 0,
+                transparent 3px,
+                rgba(0, 0, 0, .08) 3px,
+                rgba(0, 0, 0, .08) 4px);
+        pointer-events: none;
+        z-index: 1;
+    }
+}

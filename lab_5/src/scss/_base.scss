@@ -1,0 +1,102 @@
+@use "variables" as *;
+@use "sass:color";
+@use "mixins" as *;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: $color-bg;
+  color: $color-text;
+  font-family: $font-main;
+  line-height: 1.5;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+    width: 1300px; // Фіксована ширина для ПК
+    margin: 0 auto;
+    padding: 0 24px 80px;
+    position: relative;
+    z-index: 1;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  @include transition;
+}
+
+ul {
+  list-style: none;
+}
+
+h1, h2, h3 {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.back-btn-wide {
+  @include flex-center;
+  gap: 12px;
+  
+  // 1. Робимо її фіксованою
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  
+  // 2. Обмежуємо ширину за вмістом
+  width: fit-content;
+  
+  padding: 14px 24px;
+  background: $color-panel;
+  border: 2px solid $color-border;
+  border-radius: 40px;
+  color: $color-muted;
+  text-decoration: none;
+  font-family: $font-main;
+  font-weight: 800;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  z-index: 100; // Піднімаємо вище за все
+  
+  @include transition;
+
+  svg {
+    color: #FFFFFF;
+    // stroke-width краще задавати в HTML або через stroke, 
+    // якщо у тебе там path
+    @include transition(transform);
+  }
+
+  &:hover {
+    // ВИПРАВЛЕННЯ: використовуємо сучасний color.adjust замість lighten
+    background: color.adjust($color-panel, $lightness: 6%); 
+    border-color: #FFFFFF;
+    color: #FFFFFF;
+
+    svg {
+      transform: translateX(-5px);
+    }
+  }
+
+  &:active {
+    transform: scale(0.96);
+  }
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}

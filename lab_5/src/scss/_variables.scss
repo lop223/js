@@ -1,0 +1,64 @@
+$font-main: "Syne", sans-serif;
+$font-mono: "JetBrains Mono", monospace;
+
+$color-bg: #0d0d12;
+$color-panel: #16161f;
+$color-border: #2a2a3a;
+$color-text: #e8e8f0;
+$color-muted: #6b6b80;
+$color-error: #cf4343;
+
+// Digital clock
+$surface: #111420;
+$surface-2: #181d2e;
+
+$accent: #ffc400;
+$accent-glow: #bb920a;
+$accent-dim: #9c7800;
+
+$warn: #ff6b35;
+$warn-glow: rgba(255, 107, 53, 0.25);
+$success: #39ff8f;
+$success-glow: rgba(57, 255, 143, 0.2);
+$text: #d0daf0;
+$text-muted: #4a567a;
+$text-dim: #232d4a;
+
+$radius: 10px;
+$radius-sm: 6px;
+$card-pad: 32px;
+
+$card: #1c2030;
+$accent: #5b7fff;
+$accent2: #ff6b6b;
+$accent3: #43e0a0;
+$accent4: #f0c040;
+$font-sans: "Syne", sans-serif;
+
+:root {
+  --bg: #0d0d12;
+  --panel: #16161f;
+  --border: #2a2a3a;
+  --text: #e8e8f0;
+  --muted: #6b6b80;
+
+  // Lamp colors
+  --color-normal: #f5f0d8;
+  --color-yellow: #ffcc00;
+  --color-blue: #4db8ff;
+  --color-green: #44ff99;
+
+  --lamp-color: var(--color-normal);
+  --lamp-glow: rgba(245, 240, 216, 0.4);
+  --lamp-glow-strong: rgba(245, 240, 216, 0.15);
+  --brightness: 1;
+
+  // Traffic lights
+  --red: #ff2525;
+  --yellow: #ffc400;
+  --green: #00e676;
+  --dim-red: #3a0a0a;
+  --dim-yellow: #2e2500;
+  --dim-green: #002e17;
+  --accent: #ffc400;
+}

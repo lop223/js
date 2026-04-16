@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 4</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="task-4.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="logo-block">
+          <h1>Shop<span>Map</span></h1>
+        </div>
+      </header>
+
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="s-label">Products</div>
+          <div class="s-val" id="stat-products">0</div>
+          <div class="s-sub">in catalog (Map)</div>
+        </div>
+        <div class="stat-card">
+          <div class="s-label">Categories</div>
+          <div class="s-val" id="stat-cats">0</div>
+          <div class="s-sub">unique (Set)</div>
+        </div>
+        <div class="stat-card">
+          <div class="s-label">Orders</div>
+          <div class="s-val" id="stat-orders">0</div>
+          <div class="s-sub">processed</div>
+        </div>
+        <div class="stat-card">
+          <div class="s-label">WeakMap Changes</div>
+          <div class="s-val" id="stat-changes">0</div>
+          <div class="s-sub">history entries</div>
+        </div>
+      </div>
+
+      <div class="layout">
+        <div class="left-col">
+          <div class="panel">
+            <div class="panel-header">
+              <div class="icon" style="background: rgba(91, 127, 255, 0.12)">
+                ⚙️
+              </div>
+              <h2>Management</h2>
+            </div>
+            <div class="panel-body">
+              <div class="tabs">
+                <button class="tab active" onclick="switchTab('add')">
+                  Add
+                </button>
+                <button class="tab" onclick="switchTab('edit')">Update</button>
+                <button class="tab" onclick="switchTab('delete')">
+                  Delete
+                </button>
+                <button class="tab" onclick="switchTab('order')">Order</button>
+              </div>
+
+              <div id="tab-add" class="tab-content active">
+                <div class="form-group">
+                  <label>Product Name</label>
+                  <input
+                    type="text"
+                    id="add-name"
+                    placeholder="e.g. Laptop Pro"
+                  />
+                </div>
+                <div class="form-group">
+                  <label>Price (USD)</label>
+                  <input
+                    type="number"
+                    id="add-price"
+                    placeholder="0.00"
+                    min="0"
+                    step="0.01"
+                  />
+                </div>
+                <div class="form-group">
+                  <label>Stock Quantity</label>
+                  <input type="number" id="add-qty" placeholder="0" min="0" />
+                </div>
+                <div class="form-group">
+                  <label>Category (Set)</label>
+                  <input
+                    type="text"
+                    id="add-cat"
+                    placeholder="e.g. Electronics"
+                  />
+                </div>
+                <button class="btn btn-success" onclick="addProduct()">
+                  + Add Product
+                </button>
+              </div>
+
+              <div id="tab-edit" class="tab-content">
+                <div class="form-group">
+                  <label>Product ID</label>
+                  <input type="text" id="edit-id" placeholder="Enter ID..." />
+                </div>
+                <div class="form-group">
+                  <label>New Price (USD)</label>
+                  <input
+                    type="number"
+                    id="edit-price"
+                    placeholder="Leave empty for no change"
+                    min="0"
+                    step="0.01"
+                  />
+                </div>
+                <div class="form-group">
+                  <label>New Quantity</label>
+                  <input
+                    type="number"
+                    id="edit-qty"
+                    placeholder="Leave empty for no change"
+                    min="0"
+                  />
+                </div>
+                <button class="btn btn-warn" onclick="updateProduct()">
+                  ✏️ Update Product
+                </button>
+              </div>
+
+              <div id="tab-delete" class="tab-content">
+                <div class="form-group">
+                  <label>Product ID to Delete</label>
+                  <input type="text" id="del-id" placeholder="Enter ID..." />
+                </div>
+                <button class="btn btn-danger" onclick="deleteProduct()">
+                  🗑 Delete Product
+                </button>
+              </div>
+
+              <div id="tab-order" class="tab-content">
+                <div class="form-group">
+                  <label>Product ID</label>
+                  <input type="text" id="ord-id" placeholder="Enter ID..." />
+                </div>
+                <div class="form-group">
+                  <label>Order Quantity</label>
+                  <input
+                    type="number"
+                    id="ord-qty"
+                    placeholder="1"
+                    min="1"
+                    value="1"
+                  />
+                </div>
+                <button class="btn btn-primary" onclick="placeOrder()">
+                  🛒 Place Order
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="right-col">
+          <div class="panel">
+            <div class="panel-header">
+              <div class="icon" style="background: rgba(91, 127, 255, 0.12)">
+                📦
+              </div>
+              <h2>Product Catalog</h2>
+              <span class="ds-tag">Map&lt;id, Product&gt;</span>
+            </div>
+            <div class="panel-body">
+              <div class="search-bar" style="margin-bottom: 16px">
+                <input
+                  type="text"
+                  id="search-input"
+                  placeholder="🔍 Search by name..."
+                />
+                <button onclick="searchProducts()">Find</button>
+                <button
+                  onclick="clearSearch()"
+                  style="
+                    background: var(--surface);
+                    border: 1px solid var(--border);
+                    color: var(--muted);
+                  "
+                >
+                  ✕
+                </button>
+              </div>
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Name</th>
+                      <th>Price</th>
+                      <th>Qty</th>
+                      <th>Category</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="product-table-body"></tbody>
+                </table>
+              </div>
+              <div id="empty-catalog" class="empty-state" style="display: none">
+                <div class="big">📭</div>
+                Catalog is empty. Add your first product!
+              </div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <div class="icon" style="background: rgba(91, 127, 255, 0.12)">
+                🛒
+              </div>
+              <h2>Orders</h2>
+              <span class="ds-tag">Set&lt;orderedIds&gt;</span>
+            </div>
+            <div class="panel-body">
+              <div id="order-list" class="order-list">
+                <div class="empty-state" style="padding: 20px">
+                  <div class="big" style="font-size: 1.5rem">📋</div>
+                  No orders yet
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <div class="icon" style="background: rgba(240, 192, 64, 0.1)">
+                🕒
+              </div>
+              <h2>Change Log</h2>
+              <span class="ds-tag">WeakMap&lt;obj, history[]&gt;</span>
+            </div>
+            <div class="panel-body">
+              <div id="change-log" class="log-list">
+                <div class="log-entry">// Log is empty</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-bg" id="modal-bg">
+      <div class="modal">
+        <div class="close-btn" onclick="closeModal()">✕</div>
+        <h3>✏️ Edit Product</h3>
+        <input type="hidden" id="modal-id" />
+        <div class="form-group">
+          <label>New Price (USD)</label>
+          <input
+            type="number"
+            id="modal-price"
+            placeholder="Current price..."
+          />
+        </div>
+        <div class="form-group">
+          <label>New Quantity</label>
+          <input
+            type="number"
+            id="modal-qty"
+            placeholder="Current quantity..."
+          />
+        </div>
+        <div class="modal-btns">
+          <button class="btn btn-danger" onclick="closeModal()">Cancel</button>
+          <button class="btn btn-warn" onclick="confirmModalEdit()">
+            Save
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="toast-container" id="toasts"></div>
+
+    <a href="/index.html" class="back-btn-wide" title="Back to Task List">
+      <svg
+        width="32"
+        height="32"
+        viewBox="0 0 32 32"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M26 16H6M6 16L15 25M6 16L15 7"
+          stroke="currentColor"
+          stroke-width="3.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </a>
+
+    <script src="task-4.js"></script>
+  </body>
+</html>
