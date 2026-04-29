@@ -295,6 +295,10 @@ form.onsubmit = (e) => {
     render();
 };
 
+const getMax = (array) => {
+    return array.sort((a, b),  a > b ? a : b)
+} 
+
 window.remove = (id) => {
     products = products.filter(p => p.id !== id);
     showToast("Видалено!");
